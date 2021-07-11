@@ -1,1 +1,7 @@
 **/.vscode/**
+.idea/*
+__pycache__/
+ipython_config.py
+.ipynb_checkpoints
+__pypackages__/
+Data/
