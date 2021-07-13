@@ -17,15 +17,13 @@ def save_some_examples(gen, val_loader, epoch, folder):
     gen.train()
 
 
-def save_checkpoint(model, optimizer, epoch):
-    filename = str(epoch) + "cpt.pth.tar"
+def save_checkpoint(model, optimizer, epoch, filename):
+    filename = str(epoch) + filename + "_cpt.pth.tar"
     print("=> Saving Checkpoint")
-    checkpoint = {
-        "state_dict": model.state_dict(),
-        "optimizer": optimizer.state_dict()
-    }
+    checkpoint = {"state_dict": model.state_dict(), "optimizer": optimizer.state_dict()}
     torch.save(checkpoint, filename)
-    
+
+
 def load_checkpoint(checkpoint_file, model, optimizer, lr):
     print("=> Loading Checkpoint")
     checkpoint = torch.load(checkpoint_file, map_location=DEVICE)
@@ -33,4 +31,3 @@ def load_checkpoint(checkpoint_file, model, optimizer, lr):
     optimizer.load_state(checkpoint["state_dict"])
     for param_group in optimizer.param_groups:
         param_group["lr"] = lr
-    
