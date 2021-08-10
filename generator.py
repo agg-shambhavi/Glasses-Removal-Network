@@ -94,6 +94,16 @@ class Generator(nn.Module):
         self.selfAttentionlayer = selfAttentionBlock.SelfAttentionBlock(in_dim=256)
         self.resBlock1 = ResidualBlock(channels=256)
         self.resBlock2 = ResidualBlock(channels=256)
+        self.lastlayer = nn.Sequential(
+            nn.Conv2d(
+                in_channels=1,
+                out_channels=1,
+                kernel_size=7,
+                stride=1,
+                padding=3,
+            ),
+            nn.Tanh(),
+        )
 
     def forward(self, x):
         batch_size, ch, h, w = x.shape
