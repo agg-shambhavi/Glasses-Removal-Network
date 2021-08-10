@@ -91,33 +91,6 @@ class Generator(nn.Module):
             in_channels=64, out_channels=1, kernel_size=6, stride=2, padding=2
         )
 
-        self.lastlayer = nn.Sequential(
-            # nn.ConvTranspose2d(
-            #     in_channels=256,
-            #     out_channels=128,
-            #     kernel_size=3,
-            #     stride=2,
-            #     padding=1,
-            #     bias=False,
-            # ),
-            # # nn.InstanceNorm2d(128),
-            # # nn.ReLU(),
-            # # nn.ConvTranspose2d(
-            # #     in_channels=128, out_channels=64, kernel_size=3, stride=2, padding=1
-            # # ),
-            # # nn.ConvTranspose2d(
-            # #     in_channels=64, out_channels=1, kernel_size=6, stride=2, padding=2
-            # # ),
-            # nn.Conv2d(
-            #     in_channels=1,
-            #     out_channels=1,
-            #     kernel_size=7,
-            #     stride=1,
-            #     padding=3,
-            # ),
-            # nn.Tanh(),
-        )
-
         self.selfAttentionlayer = selfAttentionBlock.SelfAttentionBlock(in_dim=256)
         self.resBlock1 = ResidualBlock(channels=256)
         self.resBlock2 = ResidualBlock(channels=256)

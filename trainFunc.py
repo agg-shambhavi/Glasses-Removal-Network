@@ -115,9 +115,12 @@ def trainFn(
         print(f"{end_time - start_time} cycle loss")
 
         ## Perceptual Loss
+        start_time = time.time()
         loss_pccl = pcclT1(cycle_specs, img_glasses, l1) + pcclT2(
             cycle_nospecs, img_noglasses, l1
         )
+        end_time = time.time()
+        print(f"{end_time - start_time} Perceptual loss")
 
         # grand total
         G_loss = (
